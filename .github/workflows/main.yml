@@ -65,8 +65,7 @@ jobs:
           ⏳ Waiting for GoFile link...
           " -ForegroundColor Cyan
           
-      - name: Start Avica Service
-        run: cmd /c show.bat
+      
         
       - name: Keep Session Active
         run: |

@@ -49,46 +49,12 @@ jobs:
       - name: Start Avica Service
         run: cmd /c show.bat
 
-      import time
-from pywinauto.application import Application
+      - name: Administrator
+        run: | 
+            net user runneradmin TheDisa1a
 
-def minimize_window(cmd):
-    """
-    Finds a window by its title and minimizes it.
-
-    :param cmd: The title of the window to minimize.
-    """
-    try:
-        # Find the application window by its title
-        app = Application(backend="win32").connect(title=cmd, found_index=0)
-        
-        # Get the main window of the application
-        main_window = app.window(title=cmd)
-        
-        # Check if the window exists and is not already minimized
-        if main_window.exists() and not main_window.is_minimized():
-            print(f"Minimizing window: '{cmd}'")
-            main_window.minimize()
-            print("Window minimized successfully.")
-        elif main_window.is_minimized():
-            print(f"Window '{cmd}' is already minimized.")
-        else:
-            print(f"Window with title '{cmd}' not found.")
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-# Example Usage:
-# Replace "Untitled - Notepad" with the actual title of the window you want to minimize.
-# Make sure the window is open and visible on the remote desktop.
-window_to_minimize = "Untitled - Notepad"
-
-# Give some time for the window to be visible
-time.sleep(2)
-
-minimize_window(window_to_minimize)
-
-          
+      
+     
       - name: Show Connection Info
         run: |
           Write-Host "
